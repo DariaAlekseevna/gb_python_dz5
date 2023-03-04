@@ -22,4 +22,4 @@ def list_to_text(text_list):
 print(text)
 my_list = text_to_list(text)
 new_text = list_to_text(del_abc(my_list))
-print(new_text)
+print(f'текст без слов, содержащих "абв": {new_text}')

@@ -5,19 +5,19 @@ def read_file(name):
     f = open(name, 'r')
     for line in f:
         name = line
-    print(name)
+    print(f'исходный файл: {name}')
     f.close()
     return name
 
-def write_file_zip(name):
-    f = open('zip.txt', 'w')
+def write_file_compress(name):
+    f = open('compress.txt', 'w')
     f.write(name)
 
-def write_file_unzip(name):
-    f = open('unzip.txt', 'w')
+def write_file_uncompress(name):
+    f = open('uncompress.txt', 'w')
     f.write(name)
 
-def zip_file(text):
+def compress_file(text):
     k = 1
     new_text = ''
     for i in range(len(text)-1):
@@ -31,22 +31,20 @@ def zip_file(text):
             k = 1
         else:
             new_text += str(k) + text[i] + '1' + text[i+1]         
-    print(new_text)
+    print(f'сжатый файл: {new_text}')
     return(new_text)
 
-def unzip(text):
+def uncompress(text):
     new_text = ''
     for i in range(0, len(text), 2):
         new_text += text[i+1] * int(text[i])
-    print(new_text)
+    print(f'восстановленный файл: {new_text}')
     return new_text
 
-
 file = read_file('text.txt')
-zip_text = zip_file(file)
+compress_text = compress_file(file)
+write_file_compress(compress_text)
 
-file_zip = read_file('zip.txt')
-unzip_text = unzip(file_zip)
-
-write_file_zip(zip_text)
-write_file_unzip(unzip_text)
+file_compress = read_file('compress.txt')
+uncompress_text = uncompress(file_compress)
+write_file_uncompress(uncompress_text)
